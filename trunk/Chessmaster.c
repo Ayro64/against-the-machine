@@ -25,12 +25,13 @@ main()
 {
 int choix=-1, test=0;
 
-	system ("clear");			/*efface l'ecran*/
-	printf("Bienvenue au jeu d'échecs\n");
-	printf("-1- Nouvelle partie\n");
-	printf("-2- Charger\n");
-	printf("-0- Quitter\n");
-	printf("Choix?");
+				/*efface l'ecran*/
+	printf("Welcome on Against the Machine\n");
+	printf("-1- New Game\n");
+	printf("-2- Load\n");
+	printf("-3- Credit\n");
+	printf("-0- Quit\n");
+	printf("Choice?");
 	scanf("%d",&choix);
 
 	switch (choix)
@@ -41,6 +42,7 @@ int choix=-1, test=0;
 			break;
 		case 2 :chargement();
 			break;
+       // case 3 :credit();
 		case 0 :printf("Au revoir\n");
 			break;
 		default :printf("Erreur de saisie\n");
