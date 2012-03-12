@@ -26,12 +26,12 @@ main()
 int choix=-1, test=0;
 
 				/*efface l'ecran*/
-	printf("Welcome on Against the Machine\n");
-	printf("-1- New Game\n");
-	printf("-2- Load\n");
-	printf("-3- Credit\n");
-	printf("-0- Quit\n");
-	printf("Choice?");
+	printf("Welcome to Against the Machine\n");
+	printf("1. New Game\n");
+	// printf("2. Load\n");
+	// printf("3. Credit\n");
+	printf("0. Quit\n");
+	printf("Pick a choice ");
 	scanf("%d",&choix);
 
 	switch (choix)
@@ -43,9 +43,9 @@ int choix=-1, test=0;
 		case 2 :chargement();
 			break;
        // case 3 :credit();
-		case 0 :printf("Au revoir\n");
+		case 0 :printf("Goodbye\n");
 			break;
-		default :printf("Erreur de saisie\n");
+		default :printf("Unrecognized entry\n");
 			 break;
 	}
 }
@@ -59,12 +59,12 @@ char vide[2], retour[2];
 
 	system ("clear");		/*efface l'ecran*/
 	printf("Options\n");
-	printf("-1- Retour au menu principal\n");
-	printf("-2- Enregistrement de la partie\n");
-	printf("-3- Aide pour les mouvements de pieces\n");
-	printf("-0- Retour à la partie\n");
+	printf("1. Back to main menu\n");
+	//printf("2. Save current game\n");
+	printf("3. Get help on how to play your turn\n");
+	printf("0. Back to game\n");
 
-	printf("Choix?");
+	printf("Pick a choice ");
 	scanf("%d",&choix);
 	switch (choix)
 	{
@@ -73,11 +73,11 @@ char vide[2], retour[2];
 		case 2 :sauvegarde();
 			break;
 		case 3 :system ("clear");
-			printf("\n\tPour un deplacement : \"pa7-a5\"");
-			printf("\n\tPour une prise : \"pa7xa5\"");
-			printf("\n\tPour le petit roque : \"00\"");
-			printf("\n\tPour le grand roque : \"000\"");
-			printf("\n\tTapez sur n'importe qu'elle touche !\n");
+			printf("\n\tTo move a piece : \"pa7-a5\"");
+			printf("\n\tTo capture a piece : \"pa7xa5\"");
+			printf("\n\tSmall castling : \"00\"");
+			printf("\n\tBig castling : \"000\"");
+			printf("\n\tPress any key.\n");
 			scanf("%s",retour);
 			c--;
 			nouveaujeu();
@@ -85,8 +85,8 @@ char vide[2], retour[2];
 		case 0 :c--;
 			nouveaujeu();
 			break;
-		default :printf("Erreur de saisie\n");
-			 printf("Tapez sur n'importe qu'elle touche !\n");
+		default :printf("Unredcognized entry\n");
+			 printf("Press any key.\n");
 			 scanf("%s",vide);
 			 scanf("%s",retour);
 			 c--;
@@ -158,18 +158,18 @@ char piece[3], coup[8], ok[2], chess[2], vide[2];
 		{
 			coup[i]=0;
 		}
-		printf("\n\tPour visualiser le menu d'option, taper \"O\"");
-		printf("\n\tPour savoir comment bouger les pieces, aller dans le menu option\n");
+		printf("\n\tTo view the Options menu, type \"O\"");
+		printf("\n\tTo get help on how to play, please go to the Options menu\n");
 		if (reste!=0)
 		{
-			printf("\n\tVous jouez avec les noirs");
+			printf("\n\tYou are Black");
 		}
 		else
 		{
-			printf("\n\tVous jouez avec les blancs");
+			printf("\n\tYou are White");
 		}
 
-		printf("\n\tQue jouez vous?");
+		printf("\n\tWhat's your move?");
 		scanf("%s",coup);
 		option=(strcmp(coup,"O")==0);
 		if (!option)
@@ -243,7 +243,7 @@ char piece[3], coup[8], ok[2], chess[2], vide[2];
 							test2=0;
 							while(!test2)
 							{
-								printf("deplacement de la piece de (%d, %d) en (%d, %d) - O / N ?",
+								printf("Move (%d, %d) to (%d, %d) - Y / N ?",
 xd, yd, x, y);
 								scanf("%s",ok);
 								if((ok[0]==79)||(ok[0]==78))
@@ -265,15 +265,15 @@ xd, yd, x, y);
 										if (m==0)
 										{
 											numechec=0;
-											printf("Il n'y a pas d'échec\n");
-											printf("Tapez sur n'importe qu'elle touche !\n");
+											printf("No king is in check\n");
+											printf("Press any key.\n");
 											scanf("%s",chess);
 										}
 										else
 										{
 											numechec=0;
-											printf("Les blancs sont echecs !\n");
-											printf("Tapez sur n'importe qu'elle touche !\n");
+											printf("The white king is in check !\n");
+											printf("Press any key.\n");
 											scanf("%s",chess);
 										}
 									}
@@ -285,14 +285,14 @@ xd, yd, x, y);
 											c--;
 											strcpy(plateau[xd][yd].nom_piece,piece);
 											strcpy(plateau[x][y].nom_piece,"  ");
-											printf("Vous etes echec! c'est un mouvement impossible !\n");
+											printf("Your king is in check! This isn't a legal move.\n");
 										}
 										else if (numechec>2)
 										{
-											printf("Vous etes echec et mate !\n");
+											printf("You're checkmate !\n");
 											mate=1;
 										}
-										printf("Tapez sur n'importe qu'elle touche !\n");
+										printf("Press any key.\n");
 										scanf("%s",chess);
 										if (numechec>2)
 										{
@@ -303,32 +303,32 @@ xd, yd, x, y);
 								else
 								{
 									c--;		/*cela permet au meme joueur de rejouer*/
-									printf("Coup invalide\n");
-									printf("Tapez sur n'importe qu'elle touche !\n");
+									printf("Illegal move\n");
+									printf("Press any key.\n");
 									scanf("%s",chess);
 								}
 							}
 							else if(ok[0]==78)
 							{
 								c--;			/*cela permet au meme joueur de rejouer*/
-								printf("Vous pouvez choisir un autre coup\n");
-								printf("Tapez sur n'importe qu'elle touche !\n");
+								printf("Press enter a move\n");
+								printf("Press any key.\n");
 								scanf("%s",chess);
 							}
 						}
 						else
 						{
 							c--;				/*cela permet au meme joueur de rejouer*/
-							printf("Vous vous etes trompé de coordonnées!\n");
-							printf("Tapez sur n'importe qu'elle touche !\n");
+							printf("Wrong coordinates\n");
+							printf("Press any key.\n");
 							scanf("%s",chess);
 						}
 					}
 					else
 					{
 						c--;				/*cela permet au meme joueur de rejouer*/
-						printf("Vous jouez avec les noirs !\n");
-						printf("Tapez sur n'importe qu'elle touche !\n");
+						printf("You're Black!\n");
+						printf("Press any key.\n");
 						scanf("%s",vide);
 						scanf("%s",chess);
 					}
@@ -344,7 +344,7 @@ xd, yd, x, y);
 							test2=0;
 							while(!test2)
 							{
-								printf("deplacement de la piece de (%d, %d) en (%d, %d) - O / N ?",
+								printf("Move (%d, %d) to (%d, %d) - Y / N ?",
 xd, yd, x, y);
 								scanf("%s",ok);
 								if((ok[0]==79)||(ok[0]==78))
@@ -366,15 +366,15 @@ xd, yd, x, y);
 										if (m==0)
 										{
 											numechec=0;
-											printf("Il n'y a pas d'échec !\n");
-											printf("Tapez sur n'importe qu'elle touche !\n");
+											printf("No king is in check.\n");
+											printf("Press any key.\n");
 											scanf("%s",chess);
 										}
 										else
 										{
 											numechec=0;
-											printf("Les noirs sont echecs !\n");
-											printf("Tapez sur n'importe qu'elle touche !\n");
+											printf("The black king is in check.\n");
+											printf("Press any key.\n");
 											scanf("%s",chess);
 										}
 									}
@@ -386,14 +386,14 @@ xd, yd, x, y);
 											c--;
 											strcpy(plateau[xd][yd].nom_piece,piece);
 											strcpy(plateau[x][y].nom_piece,"  ");
-											printf("Vous etes echec! c'est un mouvement impossible !\n");
+											printf("Your king is in check! This isn't a legal move.\n");
 										}
 										else if (numechec>2)
 										{
-											printf("Vous etes echec et mate ! \n");
+											printf("You're checkmate! \n");
 											mate=1;
 										}
-										printf("Tapez sur n'importe qu'elle touche !\n");
+										printf("Press any key.\n");
 										scanf("%s",chess);
 										if (numechec>2)
 										{
@@ -404,32 +404,32 @@ xd, yd, x, y);
 								else
 								{
 									c--;		/*cela permet au meme joueur de rejouer*/
-									printf("Coup invalide\n");
-									printf("Tapez sur n'importe qu'elle touche !\n");
+									printf("Illegal move\n");
+									printf("Press any key.\n");
 									scanf("%s",chess);
 								}
 							}
 							else if(ok[0]==78)
 							{
 								c--;			/*cela permet au meme joueur de rejouer*/
-								printf("Vous pouvez choisir un autre coup\n");
-								printf("Tapez sur n'importe qu'elle touche !\n");
+								printf("Please enter a move\n");
+								printf("Press any key.\n");
 								scanf("%s",chess);
 							}
 						}
 						else
 						{
 							c--;				/*cela permet au meme joueur de rejouer*/
-							printf("Vous vous etes trompé de coordonnées!\n");
-							printf("Tapez sur n'importe qu'elle touche !\n");
+							printf("Wrong coordinates.\n");
+							printf("Press any key.\n");
 							scanf("%s",chess);
 						}
 					}
 					else
 					{
 						c--;				/*cela permet au meme joueur de rejouer*/
-						printf("Vous jouez avec les blancs !\n");
-						printf("Tapez sur n'importe qu'elle touche !\n");
+						printf("You're White !\n");
+						printf("Press any key.\n");
 						scanf("%s",vide);
 						scanf("%s",chess);
 					}
@@ -456,8 +456,8 @@ xd, yd, x, y);
 						else
 						{
 							c--;				/*cela permet au meme joueur de rejouer*/
-							printf("Le roque est impossible !\n");
-							printf("Tapez sur n'importe qu'elle touche !\n");
+							printf("You can't do a castling right now\n");
+							printf("Press any key.\n");
 							scanf("%s",chess);
 						}
 					}
@@ -478,8 +478,8 @@ xd, yd, x, y);
 						else
 						{
 							c--;				/*cela permet au meme joueur de rejouer*/
-							printf("Le roque est impossible !\n");
-							printf("Tapez sur n'importe qu'elle touche !\n");
+							printf("You can't do a castling right now.\n");
+							printf("Press any key.\n");
 							scanf("%s",chess);
 						}
 					}
@@ -502,8 +502,8 @@ xd, yd, x, y);
 						else
 						{
 							c--;				/*cela permet au meme joueur de rejouer*/
-							printf("Le roque est impossible !\n");
-							printf("Tapez sur n'importe qu'elle touche !\n");
+							printf("You can't do a castling right now\n");
+							printf("Press any key.\n");
 							scanf("%s",chess);
 						}
 					}
@@ -523,8 +523,8 @@ xd, yd, x, y);
 						else
 						{
 							c--;				/*cela permet au meme joueur de rejouer*/
-							printf("Le roque est impossible !\n");
-							printf("Tapez sur n'importe qu'elle touche !\n");
+							printf("You can't do a castling right now\n");
+							printf("Press any key.\n");
 							scanf("%s",chess);
 						}
 					}
@@ -533,8 +533,8 @@ xd, yd, x, y);
 			else
 			{
 				c--;				/*cela permet au meme joueur de rejouer*/
-				printf("Vous vous etes trompé de coordonnées!\n");
-				printf("Tapez sur n'importe qu'elle touche !\n");
+				printf("Wrong coordinates\n");
+				printf("Press any key.\n");
 				scanf("%s",chess);
 			}
 		}
@@ -1496,7 +1496,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 		}
 	}
 
-	printf("Le roi blanc est en(%d, %d)\n", xroi, yroi);
+	printf("White king's position is (%d, %d)\n", xroi, yroi);
 
 	e=xroi+1;
 	f=yroi+1;
@@ -1504,7 +1504,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	if (comp1)
 	{
 		echec=1;
-		printf("Un echec detecte par un pion noir...\n");
+		printf("Check detected by a black pawn...\n");
 	}
 	e=xroi+1;
 	f=yroi-1;
@@ -1512,7 +1512,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	if (comp1)
 	{
 		echec=1;
-		printf("Un echec detecte par un pion noir...\n");
+		printf("Check detected by a black pawn...\n");
 	}
 	e=xroi+1;
 	f=yroi+2;
@@ -1520,7 +1520,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	if (comp1)
 	{
 		echec=1;
-		printf("Un echec detecte par un cavalier noir...\n");
+		printf("Check detected by a black knight...\n");
 	}
 	e=xroi+1;
 	f=yroi-2;
@@ -1528,7 +1528,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	if (comp1)
 	{
 		echec=1;
-		printf("Un echec detecte par un cavalier noir...\n");
+		printf("Check detected by a black knight...\n");
 	}
 	e=xroi-1;
 	f=yroi+2;
@@ -1536,7 +1536,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	if (comp1)
 	{
 		echec=1;
-		printf("Un echec detecte par un cavalier noir...\n");
+		printf("Check detected by a black knight...\n");
 	}
 	e=xroi-1;
 	f=yroi-2;
@@ -1544,7 +1544,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	if (comp1)
 	{
 		echec=1;
-		printf("Un echec detecte par un cavalier noir...\n");
+		printf("Check detected by a black knight...\n");
 	}
 	e=xroi+2;
 	f=yroi+1;
@@ -1552,7 +1552,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	if (comp1)
 	{
 		echec=1;
-		printf("Un echec detecte par un cavalier noir...\n");
+		printf("Check detected by a black knight...\n");
 	}
 	e=xroi+2;
 	f=yroi-1;
@@ -1560,7 +1560,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	if (comp1)
 	{
 		echec=1;
-		printf("Un echec detecte par un cavalier noir...\n");
+		printf("Check detected by a black knight...\n");
 	}
 	e=xroi-2;
 	f=yroi+1;
@@ -1568,7 +1568,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	if (comp1)
 	{
 		echec=1;
-		printf("Un echec detecte par un cavalier noir...\n");
+		printf("Check detected by a black knight...\n");
 	}
 	e=xroi-2;
 	f=yroi-1;
@@ -1576,7 +1576,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	if (comp1)
 	{
 		echec=1;
-		printf("Un echec detecte par un cavalier noir...\n");
+		printf("Check detected by a black knight\n");
 	}
 	e=xroi-1;
 	f=yroi-1;
@@ -1584,7 +1584,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	if (comp1)
 	{
 		echec=1;
-		printf("Vos deux rois seraient colles...\n");
+		printf("Both kings would be placed next to each other...\n");
 	}
 	e=xroi-1;
 	f=yroi+1;
@@ -1592,7 +1592,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	if (comp1)
 	{
 		echec=1;
-		printf("Vos deux rois seraient colles...\n");
+		printf("Both kings would be placed next to each other...\n");
 	}
 	e=xroi-1;
 	f=yroi;
@@ -1600,7 +1600,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	if (comp1)
 	{
 		echec=1;
-		printf("Vos deux rois seraient colles...\n");
+		printf("Both kings would be placed next to each other...\n");
 	}
 	e=xroi+1;
 	f=yroi;
@@ -1608,7 +1608,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	if (comp1)
 	{
 		echec=1;
-		printf("Vos deux rois seraient colles...\n");
+		printf("Both kings would be placed next to each other...\n");
 	}
 	e=xroi+1;
 	f=yroi+1;
@@ -1616,7 +1616,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	if (comp1)
 	{
 		echec=1;
-		printf("Vos deux rois seraient colles...\n");
+		printf("Both kings would be placed next to each other...\n");
 	}
 	e=xroi+1;
 	f=yroi-1;
@@ -1624,7 +1624,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	if (comp1)
 	{
 		echec=1;
-		printf("Vos deux rois seraient colles...\n");
+		printf("Both kings would be placed next to each other...\n");
 	}
 	e=xroi;
 	f=yroi+1;
@@ -1632,7 +1632,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	if (comp1)
 	{
 		echec=1;
-		printf("Vos deux rois seraient colles...\n");
+		printf("Both kings would be placed next to each other...\n");
 	}
 	e=xroi;
 	f=yroi-1;
@@ -1640,7 +1640,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	if (comp1)
 	{
 		echec=1;
-		printf("Vos deux rois seraient colles...\n");
+		printf("Both kings would be placed next to each other...\n");
 	}
 	e=xroi-1;
 	f=yroi;
@@ -1649,7 +1649,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	if (comp2)
 	{
 		echec=1;
-		printf("Un echec detecte par une tour noire...\n");
+		printf("Check detected by a black rook...\n");
 	}
 	while (e>-1 && comp1)
 	{
@@ -1659,7 +1659,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 		if (comp2)
 		{
 			echec=1;
-			printf("Un echec detecte par une tour noire...\n");
+			printf("Check detected by a black rook...\n");
 		}
 	}
 	e=xroi;
@@ -1669,7 +1669,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	if (comp2)
 	{
 		echec=1;
-		printf("Un echec detecte par une tour noire...\n");
+		printf("Check detected by a black rook...\n");
 	}
 	while (f>-1 && comp1)
 	{
@@ -1679,7 +1679,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 		if (comp2)
 		{
 			echec=1;
-			printf("Un echec detecte par une tour noire...\n");
+			printf("Check detected by a black rook...\n");
 		}
 	}
 	e=xroi+1;
@@ -1689,7 +1689,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	if (comp2)
 	{
 		echec=1;
-		printf("Un echec detecte par une tour noire...\n");
+		printf("Check detected by a black rook...\n");
 	}
 	while (e<8 && comp1)
 	{
@@ -1699,7 +1699,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 		if (comp2)
 		{
 			echec=1;
-			printf("Un echec detecte par une tour noire...\n");
+			printf("Check detected by a black rook...\n");
 		}
 	}
 	e=xroi;
@@ -1709,7 +1709,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	if (comp2)
 	{
 		echec=1;
-		printf("Un echec detecte par une tour noire...\n");
+		printf("Check detected by a black rook...\n");
 	}
 	while (f<8 && comp1)
 	{
@@ -1719,7 +1719,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 		if (comp2)
 		{
 			echec=1;
-			printf("Un echec detecte par une tour noire...\n");
+			printf("Check detected by a black rook...\n");
 		}
 	}
 	e=xroi-1;
@@ -1729,7 +1729,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	if (comp2)
 	{
 		echec=1;
-		printf("Un echec detecte par une dame noire...\n");
+		printf("Check detected by a black queen...\n");
 	}
 	while (e>-1 && comp1)
 	{
@@ -1739,7 +1739,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 		if (comp2)
 		{
 			echec=1;
-			printf("Un echec detecte par une dame noire...\n");
+			printf("Check detected by a black queen...\n");
 		}
 	}
 	e=xroi;
@@ -1749,7 +1749,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	if (comp2)
 	{
 		echec=1;
-		printf("Un echec detecte par une dame noire...\n");
+		printf("Check detected by a black queen...\n");
 	}
 	while (f>-1 && comp1)
 	{
@@ -1759,7 +1759,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 		if (comp2)
 		{
 			echec=1;
-			printf("Un echec detecte par une dame noire...\n");
+			printf("Check detected by a black queen...\n");
 		}
 	}
 	e=xroi+1;
@@ -1769,7 +1769,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	if (comp2)
 	{
 		echec=1;
-		printf("Un echec detecte par une dame noire...\n");
+		printf("Check detected by a black queen...\n");
 	}
 	while (e<8 && comp1)
 	{
@@ -1779,7 +1779,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 		if (comp2)
 		{
 			echec=1;
-			printf("Un echec detecte par une dame noire...\n");
+			printf("Check detected by a black queen...\n");
 		}
 	}
 	e=xroi;
@@ -1789,7 +1789,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	if (comp2)
 	{
 		echec=1;
-		printf("Un echec detecte par une dame noire...\n");
+		printf("Check detected by a black queen...\n");
 	}
 	while (f<8 && comp1)
 	{
@@ -1799,7 +1799,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 		if (comp2)
 		{
 			echec=1;
-			printf("Un echec detecte par une dame noire...\n");
+			printf("Check detected by a black queen...\n");
 		}
 	}
 	e=xroi+1;
@@ -1809,7 +1809,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	if (comp2)
 	{
 		echec=1;
-		printf("Un echec detecte par une dame noire...\n");
+		printf("Check detected by a black queen...\n");
 	}
 	while (e<8 && f<8 && comp1)
 	{
@@ -1820,7 +1820,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 		if (comp2)
 		{
 			echec=1;
-			printf("Un echec detecte par une dame noire...\n");
+			printf("Check detected by a black queen...\n");
 		}
 	}
 	e=xroi+1;
@@ -1830,7 +1830,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	if (comp2)
 	{
 		echec=1;
-		printf("Un echec detecte par une dame noire...\n");
+		printf("Check detected by a black queen...\n");
 	}
 	while (e<8 && f>-1 && comp1)
 	{
@@ -1840,7 +1840,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 		comp2=(strcmp(plateau[e][f].nom_piece,"Dn")==0);
 		if (comp2){
 			echec=1;
-			printf("Un echec detecte par une dame noire...\n");
+			printf("Check detected by a black queen...\n");
 		}
 	}
 	e=xroi-1;
@@ -1850,7 +1850,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	if (comp2)
 	{
 		echec=1;
-		printf("Un echec detecte par une dame noire...\n");
+		printf("Check detected by a black queen...\n");
 	}
 	while (e>-1 && f<8 && comp1)
 	{
@@ -1860,7 +1860,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 		comp2=(strcmp(plateau[e][f].nom_piece,"Dn")==0);
 		if (comp2){
 			echec=1;
-			printf("Un echec detecte par une dame noire...\n");
+			printf("Check detected by a black queen...\n");
 		}
 	}
 	e=xroi-1;
@@ -1870,7 +1870,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	if (comp2)
 	{
 		echec=1;
-		printf("Un echec detecte par une dame noire...\n");
+		printf("Check detected by a black queen...\n");
 	}
 	while (e>-1 && f>-1 && comp1)
 	{
@@ -1880,7 +1880,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 		comp2=(strcmp(plateau[e][f].nom_piece,"Dn")==0);
 		if (comp2){
 			echec=1;
-			printf("Un echec detecte par une dame noire...\n");
+			printf("Check detected by a black queen...\n");
 		}
 	}
 	e=xroi+1;
@@ -1890,7 +1890,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	if (comp2)
 	{
 		echec=1;
-		printf("Un echec detecte par un fou noir...\n");
+		printf("Check detected by a black bishop...\n");
 	}
 	while (e<8 && f<8 && comp1)
 	{
@@ -1901,7 +1901,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 		if (comp2)
 		{
 			echec=1;
-			printf("Un echec detecte par un fou noir...\n");
+			printf("Check detected by a black bishop...\n");
 		}
 	}
 	e=xroi+1;
@@ -1911,7 +1911,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	if (comp2)
 	{
 		echec=1;
-		printf("Un echec detecte par un fou noir...\n");
+		printf("Check detected by a black bishop...\n");
 	}
 	while (e<8 && f>-1 && comp1)
 	{
@@ -1922,7 +1922,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 		if (comp2)
 		{
 			echec=1;
-			printf("Un echec detecte par un fou noir...\n");
+			printf("Check detected by a black bishop...\n");
 		}
 	}
 	e=xroi-1;
@@ -1932,7 +1932,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	if (comp2)
 	{
 		echec=1;
-		printf("Un echec detecte par un fou noir...\n");
+		printf("Check detected by a black bishop...\n");
 	}
 	while (e>-1 && f<8 &&  comp1)
 	{
@@ -1943,7 +1943,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 		if (comp2)
 		{
 			echec=1;
-			printf("Un echec detecte par un fou noir...\n");
+			printf("Check detected by a black bishop...\n");
 		}
 	}
 	e=xroi-1;
@@ -1953,7 +1953,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	if (comp2)
 	{
 		echec=1;
-		printf("Un echec detecte par un fou noir...\n");
+		printf("Check detected by a black bishop...\n");
 	}
 	while (e>-1 && f>-1 &&  comp1)
 	{
@@ -1964,7 +1964,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 		if (comp2)
 		{
 			echec=1;
-			printf("Un echec detecte par un fou noir...\n");
+			printf("Check detected by a black bishop...\n");
 		}
 	}
 	return echec;
@@ -1991,14 +1991,14 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 			}
 		}
 	}
-	printf("Le roi noir est en(%d, %d)\n", xroi, yroi);
+	printf("Black king's position is (%d, %d)\n", xroi, yroi);
 	e=xroi-1;
 	f=yroi+1;
 	comp1=(strcmp(plateau[e][f].nom_piece,"pb")==0);
 	if (e>0 && f<7 && comp1)
 	{
 		echec=1;
-		printf("Un echec detecte par un pion blanc...\n");
+		printf("Check detected by a white pawn...\n");
 	}
 	e=xroi-1;
 	f=yroi-1;
@@ -2006,7 +2006,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	if (e>0 && f>0 && comp1)
 	{
 		echec=1;
-		printf("Un echec detecte par un pion blanc...\n");
+		printf("Check detected by a white pawn...\n");
 	}
 	e=xroi+1;
 	f=yroi+2;
@@ -2014,7 +2014,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	if (e<7 && f<6 && comp1)
 	{
 		echec=1;
-		printf("Un echec detecte par un cavalier blanc...\n");
+		printf("Check detected by a white knight...\n");
 	}
 	e=xroi+1;
 	f=yroi-2;
@@ -2022,7 +2022,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	if (e<7 && f>1 && comp1)
 	{
 		echec=1;
-		printf("Un echec detecte par un cavalier blanc...\n");
+		printf("Check detected by a white knight...\n");
 	}
 	e=xroi-1;
 	f=yroi+2;
@@ -2030,7 +2030,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	if (e>0 && f<6 && comp1)
 	{
 		echec=1;
-		printf("Un echec detecte par un cavalier blanc...\n");
+		printf("Check detected by a white knight...\n");
 	}
 	e=xroi-1;
 	f=yroi-2;
@@ -2038,7 +2038,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	if (e>0 && f>1 && comp1)
 	{
 		echec=1;
-		printf("Un echec detecte par un cavalier blanc...\n");
+		printf("Check detected by a white knight...\n");
 	}
 	e=xroi+2;
 	f=yroi+1;
@@ -2046,7 +2046,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	if (e<6 && f<7 && comp1)
 	{
 		echec=1;
-		printf("Un echec detecte par un cavalier blanc...\n");
+		printf("Check detected by a white knight...\n");
 	}
 	e=xroi+2;
 	f=yroi-1;
@@ -2054,7 +2054,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	if (e<6 && f>0 && comp1)
 	{
 		echec=1;
-		printf("Un echec detecte par un cavalier blanc...\n");
+		printf("Check detected by a white knight...\n");
 	}
 	e=xroi-2;
 	f=yroi+1;
@@ -2062,7 +2062,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	if (e>1 && f<7 && comp1)
 	{
 		echec=1;
-		printf("Un echec detecte par un cavalier blanc...\n");
+		printf("Check detected by a white knight...\n");
 	}
 	e=xroi-2;
 	f=yroi-1;
@@ -2070,7 +2070,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	if (e>1 && f>0 && comp1)
 	{
 		echec=1;
-		printf("Un echec detecte par un cavalier blanc...\n");
+		printf("Check detected by a white knight...\n");
 	}
 	e=xroi-1;
 	f=yroi-1;
@@ -2078,7 +2078,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	if (comp1)
 	{
 		echec=1;
-		printf("Vos deux rois seraient colles...\n");
+		printf("Both kings would be placed next to each other...\n");
 	}
 	e=xroi-1;
 	f=yroi+1;
@@ -2086,7 +2086,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	if (comp1)
 	{
 		echec=1;
-		printf("Vos deux rois seraient colles...\n");
+		printf("Both kings would be placed next to each other...\n");
 	}
 	e=xroi-1;
 	f=yroi;
@@ -2094,7 +2094,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	if (comp1)
 	{
 		echec=1;
-		printf("Vos deux rois seraient colles...\n");
+		printf("Both kings would be placed next to each other...\n");
 	}
 	e=xroi+1;
 	f=yroi;
@@ -2102,7 +2102,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	if (comp1)
 	{
 		echec=1;
-		printf("Vos deux rois seraient colles...\n");
+		printf("Both kings would be placed next to each other...\n");
 	}
 	e=xroi+1;
 	f=yroi+1;
@@ -2110,7 +2110,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	if (comp1)
 	{
 		echec=1;
-		printf("Vos deux rois seraient colles...\n");
+		printf("Both kings would be placed next to each other...\n");
 	}
 	e=xroi+1;
 	f=yroi-1;
@@ -2118,7 +2118,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	if (comp1)
 	{
 		echec=1;
-		printf("Vos deux rois seraient colles...\n");
+		printf("Both kings would be placed next to each other...\n");
 	}
 	e=xroi;
 	f=yroi+1;
@@ -2126,7 +2126,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	if (comp1)
 	{
 		echec=1;
-		printf("Vos deux rois seraient colles...\n");
+		printf("Both kings would be placed next to each other...\n");
 	}
 	e=xroi;
 	f=yroi-1;
@@ -2134,7 +2134,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	if (comp1)
 	{
 		echec=1;
-		printf("Vos deux rois seraient colles...\n");
+		printf("Both kings would be placed next to each other...\n");
 	}
 	e=xroi-1;
 	f=yroi;
@@ -2143,7 +2143,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	if (comp2)
 	{
 		echec=1;
-		printf("Un echec detecte par une tour blanche...\n");
+		printf("Check detected by a white rook...\n");
 	}
 	while (e>-1 && comp1)
 	{
@@ -2153,7 +2153,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 		if (comp2)
 		{
 			echec=1;
-			printf("Un echec detecte par une tour blanche...\n");
+			printf("Check detected by a white rook...\n");
 		}
 	}
 	e=xroi;
@@ -2163,7 +2163,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	if (comp2)
 	{
 		echec=1;
-		printf("Un echec detecte par une tour blanche...\n");
+		printf("Check detected by a white rook...\n");
 	}
 	while (f>-1 && comp1)
 	{
@@ -2173,7 +2173,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 		if (comp2)
 		{
 			echec=1;
-			printf("Un echec detecte par une tour blanche...\n");
+			printf("Check detected by a white rook...\n");
 		}
 	}
 	e=xroi+1;
@@ -2183,7 +2183,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	if (comp2)
 	{
 		echec=1;
-		printf("Un echec detecte par une tour blanche...\n");
+		printf("Check detected by a white rook...\n");
 	}
 	while (e<8 && comp1)
 	{
@@ -2193,7 +2193,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 		if (comp2)
 		{
 			echec=1;
-			printf("Un echec detecte par une tour blanche...\n");
+			printf("Check detected by a white rook...\n");
 		}
 	}
 	e=xroi;
@@ -2203,7 +2203,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	if (comp2)
 	{
 		echec=1;
-		printf("Un echec detecte par une tour blanche...\n");
+		printf("Check detected by a white rook...\n");
 	}
 	while (f<8 && comp1)
 	{
@@ -2213,7 +2213,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 		if (comp2)
 		{
 			echec=1;
-			printf("Un echec detecte par une tour blanche...\n");
+			printf("Check detected by a white rook...\n");
 		}
 	}
 	e=xroi-1;
@@ -2223,7 +2223,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	if (comp2)
 	{
 		echec=1;
-		printf("Un echec detecte par une dame blanche...\n");
+		printf("Check detected by a white queen...\n");
 	}
 	while (e>-1 && comp1)
 	{
@@ -2233,7 +2233,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 		if (comp2)
 		{
 			echec=1;
-			printf("Un echec detecte par une dame blanche...\n");
+			printf("Check detected by a white queen...\n");
 		}
 	}
 	e=xroi;
@@ -2243,7 +2243,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	if (comp2)
 	{
 		echec=1;
-		printf("Un echec detecte par une dame blanche...\n");
+		printf("Check detected by a white queen...\n");
 	}
 	while (f>-1 && comp1)
 	{
@@ -2253,7 +2253,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 		if (comp2)
 		{
 			echec=1;
-			printf("Un echec detecte par une dame blanche...\n");
+			printf("Check detected by a white queen...\n");
 		}
 	}
 	e=xroi+1;
@@ -2263,7 +2263,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	if (comp2)
 	{
 		echec=1;
-		printf("Un echec detecte par une dame blanche...\n");
+		printf("Check detected by a white queen...\n");
 	}
 	while (e<8 && comp1)
 	{
@@ -2273,7 +2273,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 		if (comp2)
 		{
 			echec=1;
-			printf("Un echec detecte par une dame blanche...\n");
+			printf("Check detected by a white queen...\n");
 		}
 	}
 	e=xroi;
@@ -2283,7 +2283,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	if (comp2)
 	{
 		echec=1;
-		printf("Un echec detecte par une dame blanche...\n");
+		printf("Check detected by a white queen...\n");
 	}
 	while (f<8 && comp1)
 	{
@@ -2293,7 +2293,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 		if (comp2)
 		{
 			echec=1;
-			printf("Un echec detecte par une dame blanche...\n");
+			printf("Check detected by a white queen...\n");
 		}
 	}
 	e=xroi+1;
@@ -2303,7 +2303,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	if (comp2)
 	{
 		echec=1;
-		printf("Un echec detecte par une dame blanche...\n");
+		printf("Check detected by a white queen...\n");
 	}
 	while (e<8 && f<8 && comp1)
 	{
@@ -2314,7 +2314,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 		if (comp2)
 		{
 			echec=1;
-			printf("Un echec detecte par une dame blanche...\n");
+			printf("Check detected by a white queen...\n");
 		}
 	}
 	e=xroi+1;
@@ -2324,7 +2324,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	if (comp2)
 	{
 		echec=1;
-		printf("Un echec detecte par une dame blanche...\n");
+		printf("Check detected by a white queen...\n");
 	}
 	while (e<8 && f>-1 && comp1)
 	{
@@ -2334,7 +2334,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 		comp2=(strcmp(plateau[e][f].nom_piece,"Db")==0);
 		if (comp2){
 			echec=1;
-			printf("Un echec detecte par une dame blanche...\n");
+			printf("Check detected by a white queen...\n");
 		}
 	}
 	e=xroi-1;
@@ -2344,7 +2344,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	if (comp2)
 	{
 		echec=1;
-		printf("Un echec detecte par une dame blanche...\n");
+		printf("Check detected by a white queen...\n");
 	}
 	while (e>-1 && f<8 && comp1)
 	{
@@ -2354,7 +2354,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 		comp2=(strcmp(plateau[e][f].nom_piece,"Db")==0);
 		if (comp2){
 			echec=1;
-			printf("Un echec detecte par une dame blanche...\n");
+			printf("Check detected by a white queen...\n");
 		}
 	}
 	e=xroi-1;
@@ -2364,7 +2364,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	if (comp2)
 	{
 		echec=1;
-		printf("Un echec detecte par une dame blanche...\n");
+		printf("Check detected by a white queen...\n");
 	}
 	while (e>-1 && f>-1 && comp1)
 	{
@@ -2374,7 +2374,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 		comp2=(strcmp(plateau[e][f].nom_piece,"Db")==0);
 		if (comp2){
 			echec=1;
-			printf("Un echec detecte par une dame blanche...\n");
+			printf("Check detected by a white queen...\n");
 		}
 	}
 	e=xroi+1;
@@ -2384,7 +2384,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	if (comp2)
 	{
 		echec=1;
-		printf("Un echec detecte par un fou blanc...\n");
+		printf("Check detected by a white bishop...\n");
 	}
 	while (e<8 && f<8 && comp1)
 	{
@@ -2395,7 +2395,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 		if (comp2)
 		{
 			echec=1;
-			printf("Un echec detecte par un fou blanc...\n");
+			printf("Check detected by a white bishop...\n");
 		}
 	}
 	e=xroi+1;
@@ -2405,7 +2405,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	if (comp2)
 	{
 		echec=1;
-		printf("Un echec detecte par un fou blanc...\n");
+		printf("Check detected by a white bishop...\n");
 	}
 	while (e<8 && f>-1 && comp1)
 	{
@@ -2416,7 +2416,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 		if (comp2)
 		{
 			echec=1;
-			printf("Un echec detecte par un fou blanc...\n");
+			printf("Check detected by a white bishop...\n");
 		}
 	}
 	e=xroi-1;
@@ -2426,7 +2426,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	if (comp2)
 	{
 		echec=1;
-		printf("Un echec detecte par un fou blanc...\n");
+		printf("Check detected by a white bishop...\n");
 	}
 	while (e>-1 && f<8 &&  comp1)
 	{
@@ -2437,7 +2437,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 		if (comp2)
 		{
 			echec=1;
-			printf("Un echec detecte par un fou blanc...\n");
+			printf("Check detected by a white bishop...\n");
 		}
 	}
 	e=xroi-1;
@@ -2447,7 +2447,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	if (comp2)
 	{
 		echec=1;
-		printf("Un echec detecte par un fou blanc...\n");
+		printf("Check detected by a white bishop...\n");
 	}
 	while (e>-1 && f>-1 &&  comp1)
 	{
@@ -2458,7 +2458,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 		if (comp2)
 		{
 			echec=1;
-			printf("Un echec detecte par un fou blanc...\n");
+			printf("Check detected by a white bishop...\n");
 		}
 	}
 	return echec;
@@ -2470,17 +2470,17 @@ void chargement()
 int retour, a=0, b=0, test2, coul, test1;
 char nomfichier[50], chargement[3], chargement2[2], menu[3];
 FILE *fic;
-	printf("Donnez le nom du fichier:\n");
+	printf("What is the file's name?\n");
 	scanf("%s", nomfichier);
 
 	fic=fopen(nomfichier,"r");
 	if (fic==NULL)
 	{
-		printf("Probleme d acces fichier %s\n", nomfichier);
+		printf("Access error %s\n", nomfichier);
 		test1=0;
 		while(!test1)
 		{
-			printf("Appuyez sur \"R\" pour revenir au menu!\n");
+			printf("Type \"R\" to go back to menu!\n");
 			scanf("%s",menu);
 			if (menu[0]==82)
 			{
@@ -2532,7 +2532,7 @@ void sauvegarde()
 int a, b, i=0, finligne=0, test1, test2, reste;
 char couleur[2], menu[2], nomfichier[50];
 FILE *fic;
-	printf("Nom de fichier?(sans extension)");
+	printf("Type in the file's name?(without extension)");
 	scanf("%s",nomfichier);
 	reste=c%2;
 	if (reste!=0)
@@ -2566,7 +2566,7 @@ FILE *fic;
   	test2=0;
 		while(!test2)
 		{
-			printf("Echiquier sauvegarde, appuyez sur \"R\" pour revenir au menu!\n");
+			printf("Game saved, type \"R\" to go back to menu!\n");
 			scanf("%s",menu);
 			if (menu[0]==82)
 			{
