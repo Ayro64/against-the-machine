@@ -106,26 +106,26 @@ int a, b;
 
 	for (b=0;b<8;b++)
 		{
-		strcpy(plateau[1][b].nom_piece,"pb");
-		strcpy(plateau[6][b].nom_piece,"pn");
+		strcpy(plateau[1][b].nom_piece,"Wp");
+		strcpy(plateau[6][b].nom_piece,"Bp");
 		} /*declaration de depart des blancs et des noirs*//*la piece 1 est un
 pion blanc, la piece 7 un pion noir*/
-	strcpy(plateau[0][0].nom_piece,"Tb"); 	/*Tour blanche*/
-	strcpy(plateau[0][7].nom_piece,"Tb");	 /*Tour blanche*/
-	strcpy(plateau[0][1].nom_piece,"Cb");	 /*Cavalier blanc*/
-	strcpy(plateau[0][6].nom_piece,"Cb");	 /*Cavalier blanc*/
-	strcpy(plateau[0][2].nom_piece,"Fb");	 /*Fou blanc*/
-	strcpy(plateau[0][5].nom_piece,"Fb");	 /*Fou blanc*/
-	strcpy(plateau[0][3].nom_piece,"Db");	 /*Dame blanc*/
-	strcpy(plateau[0][4].nom_piece,"Rb");    /*Roi blanc*/
-	strcpy(plateau[7][0].nom_piece,"Tn");	 /*Tour noir*/
-	strcpy(plateau[7][7].nom_piece,"Tn");	 /*Tour noir*/
-	strcpy(plateau[7][1].nom_piece,"Cn");	 /*Cavalier noir*/
-	strcpy(plateau[7][6].nom_piece,"Cn");	 /*Cavalier noir*/
-	strcpy(plateau[7][2].nom_piece,"Fn");	 /*Fou noir*/
-	strcpy(plateau[7][5].nom_piece,"Fn");	 /*Fou noir*/
-	strcpy(plateau[7][3].nom_piece,"Dn");	 /*Dame noir*/
-	strcpy(plateau[7][4].nom_piece,"Rn");	 /*Roi noir*/
+	strcpy(plateau[0][0].nom_piece,"Wr"); 	/*Tour blanche*/
+	strcpy(plateau[0][7].nom_piece,"Wr");	 /*Tour blanche*/
+	strcpy(plateau[0][1].nom_piece,"Wk");	 /*Cavalier blanc*/
+	strcpy(plateau[0][6].nom_piece,"Wk");	 /*Cavalier blanc*/
+	strcpy(plateau[0][2].nom_piece,"Wb");	 /*Fou blanc*/
+	strcpy(plateau[0][5].nom_piece,"Wb");	 /*Fou blanc*/
+	strcpy(plateau[0][3].nom_piece,"Wq");	 /*Dame blanc*/
+	strcpy(plateau[0][4].nom_piece,"WK");    /*Roi blanc*/
+	strcpy(plateau[7][0].nom_piece,"Br");	 /*Tour noir*/
+	strcpy(plateau[7][7].nom_piece,"Br");	 /*Tour noir*/
+	strcpy(plateau[7][1].nom_piece,"Bk");	 /*Cavalier noir*/
+	strcpy(plateau[7][6].nom_piece,"Bk");	 /*Cavalier noir*/
+	strcpy(plateau[7][2].nom_piece,"Bb");	 /*Fou noir*/
+	strcpy(plateau[7][5].nom_piece,"Bb");	 /*Fou noir*/
+	strcpy(plateau[7][3].nom_piece,"Bq");	 /*Dame noir*/
+	strcpy(plateau[7][4].nom_piece,"BK");	 /*Roi noir*/
 }
 
 /*------------------------------------------------*/
@@ -177,13 +177,13 @@ char piece[3], coup[8], ok[2], chess[2], vide[2];
 			type=coup[3];
 			if (reste!=0)
 			{		/*detection de la piece	utilisee*/
-				if (coup[0]==112) strcpy(piece,"pn"); 	/*ici un pion*/
-				else if (coup[0]==84) strcpy(piece,"Tn");	/*ici une tour*/
-				else if (coup[0]==67) strcpy(piece,"Cn");	/*ici un cavalier*/
-				else if (coup[0]==70) strcpy(piece,"Fn");	/*ici un fou*/
-				else if (coup[0]==68) strcpy(piece,"Dn");	/*ici une dame*/
-				else if (coup[0]==82) strcpy(piece,"Rn");	/*ici un roi*/
-				else if (coup[1]==48) 				/*ici les roques*/
+				if (coup[0]==112) strcpy(piece,"Bp"); 	/*ici un pion*/
+				else if (coup[0]==114) strcpy(piece,"Br");	/*ici une tour*/
+				else if (coup[0]==107) strcpy(piece,"Bk");	/*ici un cavalier*/
+				else if (coup[0]==98) strcpy(piece,"Bb");	/*ici un fou*/
+				else if (coup[0]==113) strcpy(piece,"Bq");	/*ici une dame*/
+				else if (coup[0]==75) strcpy(piece,"BK");	/*ici un roi*/
+				else if (coup[0]==48) 				/*ici les roques*/
 				{
 					if (coup[2]==48) 	  		/*ici le grand roque*/
 					{
@@ -197,13 +197,13 @@ char piece[3], coup[8], ok[2], chess[2], vide[2];
 			}
 			else
 			{
-				if (coup[0]==112) strcpy(piece,"pb"); 	/*ici un pion*/
-				else if (coup[0]==84) strcpy(piece,"Tb");	/*ici une tour*/
-				else if (coup[0]==67) strcpy(piece,"Cb");	/*ici un cavalier*/
-				else if (coup[0]==70) strcpy(piece,"Fb");	/*ici un fou*/
-				else if (coup[0]==68) strcpy(piece,"Db");	/*ici une dame*/
-				else if (coup[0]==82) strcpy(piece,"Rb");	/*ici un roi*/
-				else if (coup[1]==48) 				/*ici les roques*/
+				if (coup[0]==112) strcpy(piece,"Wp"); 	/*ici un pion*/
+				else if (coup[0]==114) strcpy(piece,"Wr");	/*ici une tour*/
+				else if (coup[0]==107) strcpy(piece,"Wk");	/*ici un cavalier*/
+				else if (coup[0]==98) strcpy(piece,"Wb");	/*ici un fou*/
+				else if (coup[0]==113) strcpy(piece,"Wq");	/*ici une dame*/
+				else if (coup[0]==75) strcpy(piece,"WK");	/*ici un roi*/
+				else if (coup[0]==48) 				/*ici les roques*/
 				{
 					if (coup[2]==48) 	  		/*ici le grand roque*/
 					{
@@ -234,7 +234,7 @@ char piece[3], coup[8], ok[2], chess[2], vide[2];
 			{
 				if(reste!=0)
 				{
-					if (plateau[xd][yd].nom_piece[1]==110)
+					if (plateau[xd][yd].nom_piece[0]==66)
 					{
 						verif=(strcmp(plateau[xd][yd].nom_piece,"  ")==0);
 						if (x>-1 && x<8 && y>-1 && y<8 && xd>-1 && xd<8 && yd>-1 && yd<8 &&
@@ -243,15 +243,14 @@ char piece[3], coup[8], ok[2], chess[2], vide[2];
 							test2=0;
 							while(!test2)
 							{
-								printf("Move (%d, %d) to (%d, %d) - Y / N ?",
-xd, yd, x, y);
+								printf("Move (%d, %d) to (%d, %d) - Y / N ? ", xd, yd, x, y);
 								scanf("%s",ok);
-								if((ok[0]==79)||(ok[0]==78))
+								if((ok[0]==89)||(ok[0]==78))
 								{
 									test2=1;
 								}
 							}
-							if (ok[0]==79)
+							if (ok[0]==89)
 							{
 								r=droit(x, y, xd, yd, reste, piece, type);
 								if (r==1)
@@ -311,7 +310,7 @@ xd, yd, x, y);
 							else if(ok[0]==78)
 							{
 								c--;			/*cela permet au meme joueur de rejouer*/
-								printf("Press enter a move\n");
+								printf("Please enter a move\n");
 								printf("Press any key.\n");
 								scanf("%s",chess);
 							}
@@ -335,7 +334,7 @@ xd, yd, x, y);
 				}
 				else
 				{
-					if (plateau[xd][yd].nom_piece[1]==98)
+					if (plateau[xd][yd].nom_piece[0]==87)
 					{
 						verif=(strcmp(plateau[xd][yd].nom_piece,"  ")==0);
 						if (x>-1 && x<8 && y>-1 && y<8 && xd>-1 && xd<8 && yd>-1 && yd<8 &&
@@ -347,12 +346,12 @@ xd, yd, x, y);
 								printf("Move (%d, %d) to (%d, %d) - Y / N ?",
 xd, yd, x, y);
 								scanf("%s",ok);
-								if((ok[0]==79)||(ok[0]==78))
+								if((ok[0]==89)||(ok[0]==78))
 								{
 									test2=1;
 								}
 							}
-							if (ok[0]==79)
+							if (ok[0]==89)
 							{
 								r=droit(x, y, xd, yd, reste, piece, type);
 								if (r==1)
@@ -441,15 +440,15 @@ xd, yd, x, y);
 				{
 					if (reste!=0)
 					{
-						comp1=(strcmp(plateau[7][4].nom_piece,"Rn")==0);
+						comp1=(strcmp(plateau[7][4].nom_piece,"BK")==0);
 						comp2=(strcmp(plateau[7][3].nom_piece,"  ")==0);
 						comp3=(strcmp(plateau[7][2].nom_piece,"  ")==0);
 						comp4=(strcmp(plateau[7][1].nom_piece,"  ")==0);
-						comp5=(strcmp(plateau[7][0].nom_piece,"Tn")==0);
+						comp5=(strcmp(plateau[7][0].nom_piece,"Br")==0);
 						if (comp1 && comp2 && comp3 && comp4 && comp5)
 						{
-							strcpy(plateau[7][3].nom_piece,"Tn");
-							strcpy(plateau[7][2].nom_piece,"Rn");
+							strcpy(plateau[7][3].nom_piece,"Br");
+							strcpy(plateau[7][2].nom_piece,"BK");
 							strcpy(plateau[7][4].nom_piece,"  ");
 							strcpy(plateau[7][0].nom_piece,"  ");
 						}
@@ -463,15 +462,15 @@ xd, yd, x, y);
 					}
 					else
 					{
-						comp1=(strcmp(plateau[0][4].nom_piece,"Rn")==0);
+						comp1=(strcmp(plateau[0][4].nom_piece,"BK")==0);
 						comp2=(strcmp(plateau[0][3].nom_piece,"  ")==0);
 						comp3=(strcmp(plateau[0][2].nom_piece,"  ")==0);
 						comp4=(strcmp(plateau[0][1].nom_piece,"  ")==0);
-						comp5=(strcmp(plateau[0][0].nom_piece,"Tn")==0);
+						comp5=(strcmp(plateau[0][0].nom_piece,"Br")==0);
 						if (comp1 && comp2 && comp3 && comp4 && comp5)
 						{
-							strcpy(plateau[0][3].nom_piece,"Tb");
-							strcpy(plateau[0][2].nom_piece,"Rb");
+							strcpy(plateau[0][3].nom_piece,"Wr");
+							strcpy(plateau[0][2].nom_piece,"WK");
 							strcpy(plateau[0][4].nom_piece,"  ");
 							strcpy(plateau[0][0].nom_piece,"  ");
 						}
@@ -488,14 +487,14 @@ xd, yd, x, y);
 				{
 					if (reste!=0)
 					{
-						comp1=(strcmp(plateau[7][4].nom_piece,"Rn")==0);
+						comp1=(strcmp(plateau[7][4].nom_piece,"BK")==0);
 						comp2=(strcmp(plateau[7][5].nom_piece,"  ")==0);
 						comp3=(strcmp(plateau[7][6].nom_piece,"  ")==0);
-						comp4=(strcmp(plateau[7][7].nom_piece,"Tn")==0);
+						comp4=(strcmp(plateau[7][7].nom_piece,"Br")==0);
 						if (comp1 && comp2 && comp3 && comp4)
 						{
-							strcpy(plateau[7][5].nom_piece,"Tn");
-							strcpy(plateau[7][6].nom_piece,"Rn");
+							strcpy(plateau[7][5].nom_piece,"Br");
+							strcpy(plateau[7][6].nom_piece,"BK");
 							strcpy(plateau[7][4].nom_piece,"  ");
 							strcpy(plateau[7][7].nom_piece,"  ");
 						}
@@ -509,14 +508,14 @@ xd, yd, x, y);
 					}
 					else
 					{
-						comp1=(strcmp(plateau[0][4].nom_piece,"Rn")==0);
+						comp1=(strcmp(plateau[0][4].nom_piece,"BK")==0);
 						comp2=(strcmp(plateau[0][5].nom_piece,"  ")==0);
 						comp3=(strcmp(plateau[0][6].nom_piece,"  ")==0);
-						comp4=(strcmp(plateau[0][7].nom_piece,"Tn")==0);
+						comp4=(strcmp(plateau[0][7].nom_piece,"Br")==0);
 						if (comp1 && comp2 && comp3 && comp4)
 						{
-							strcpy(plateau[0][5].nom_piece,"Tb");
-							strcpy(plateau[0][6].nom_piece,"Rb");
+							strcpy(plateau[0][5].nom_piece,"Wr");
+							strcpy(plateau[0][6].nom_piece,"WK");
 							strcpy(plateau[0][4].nom_piece,"  ");
 							strcpy(plateau[0][7].nom_piece,"  ");
 						}
@@ -553,24 +552,30 @@ void affichage()
 int a, b, c=0, couleur;
 
 	system ("clear");		/*efface l'ecran*/
-	printf("\n\t|--a----b----c----d---e----f----g----h--|\n\t");
-	printf("|---------------------------------------|\n\t"); /*Les affichages
+	printf("\n\t.________________________________________________________.\n\t");
+    printf("||      |      |      |      |      |      |      |      |\n\t");
+    printf("||  A   |  B   |  C   |  D   |  E   |  F   |  G   |  H   |\n\t");
+	printf("||______|______|______|______|______|______|______|______|\n\t"); /*Les affichages
 sont tres basics, seulement des lettres et les
 	coordonnees des cases*/
 	for (a=0;a<8;a++)		/*fait varier l'abscisse de 0 a  7 ce qui corespond aux
 colonnes de 'a' a  'h'*/
 	{
+	    printf("||      |      |      |      |      |      |      |      |\n\t");
+	    printf("|");
 		for (b=0;b<8;b++)	/*idem pour l'ordonnee ce qui corespond aux lignes de
 '1' a  '8'.*/
 		{
 			c++;
-			printf("| %s ",plateau[a][b].nom_piece);
+			printf("|  %s  ",plateau[a][b].nom_piece);
 			if ( c % 8 == 0) /*si 8 cases ont ete affichees alors on retourne a la
 ligne*/
-			printf("|%d\n\t|---------------------------------------|\n\t", c/8);
+			printf("| %d\n\t||______|______|______|______|______|______|______|______|\n\t", c/8);
 		}
 	}
-	printf("|--a----b----c----d---e----f----g----h--|\n");
+        printf("||      |      |      |      |      |      |      |      |\n\t");
+        printf("||  A   |  B   |  C   |  D   |  E   |  F   |  G   |  H   |\n\t");
+	printf("||______|______|______|______|______|______|______|______|\n\t");
 }
 
 /*------------------------------------------------*/
@@ -582,9 +587,9 @@ int droits, c, a , b, i, t=0, j, r=0, depart, e, f, calcul=0, verif1,
 verif2;
 	if (type==45)
 	{
-		if(piece[0]==112)				/*pion*/
+		if(piece[1]==112)				/*pion*/
 		{
-			if(piece[1]==98)			/*blanc*/
+			if(piece[0]==87)			/*blanc*/
 			{
 				if (yd==y)
 				{
@@ -619,7 +624,7 @@ verif2;
 					}
 				}
 			}
-			else if(piece[1]==110)			/*noir*/
+			else if(piece[0]==66)			/*noir*/
 			{
 				if (yd==y)
 				{
@@ -655,9 +660,9 @@ verif2;
 				}
 			}
 		}
-		if(piece[0]==82)				/*roi*/
+		if(piece[1]==75)				/*roi*/
 		{
-			if(piece[1]==110 || piece[1]==98)			/*noir et blanc*/
+			if(piece[0]==66 || piece[0]==87)			/*noir et blanc*/
 			{
 				verif1=(strcmp(plateau[x][y].nom_piece,"  ")==0);
 				if (verif1)
@@ -670,9 +675,9 @@ verif2;
 				}
 			}
 		}
-		else if(piece[0]==68)				/*dame*/
+		else if(piece[1]==113)				/*dame*/
 		{
-			if(piece[1]==110 || piece[1]==98)			/*noir et blanc*/
+			if(piece[0]==66 || piece[0]==87)			/*noir et blanc*/
 			{
 				verif1=(strcmp(plateau[x][y].nom_piece,"  ")==0);
 				if (verif1)
@@ -780,9 +785,9 @@ verif2;
 				}
 			}
 		}
-		else if(piece[0]==84)				/*tour*/
+		else if(piece[1]==114)				/*tour*/
 		{
-			if(piece[1]==110 || piece[1]==98)			/*noir et blanc*/
+			if(piece[0]==66 || piece[0]==87)			/*noir et blanc*/
 			{
 				verif1=(strcmp(plateau[x][y].nom_piece,"  ")==0);
 				if (verif1)
@@ -853,9 +858,9 @@ verif2;
 				}
 			}
 		}
-		else if(piece[0]==67)				/*cavalier*/
+		else if(piece[1]==107)				/*cavalier*/
 		{
-			if(piece[1]==110 || piece[1]==98)			/*noir et blanc*/
+			if(piece[0]==66 || piece[0]==87)			/*noir et blanc*/
 			{
 				verif1=(strcmp(plateau[x][y].nom_piece,"  ")==0);
 				if (verif1)
@@ -871,9 +876,9 @@ verif2;
 				}
 			}
 		}
-		else if(piece[0]==70)				/*fou*/
+		else if(piece[1]==98)				/*fou*/
 		{
-			if(piece[1]==110 || piece[1]==98)			/*noir et blanc*/
+			if(piece[0]==66 || piece[0]==87)			/*noir et blanc*/
 			{
 				verif1=(strcmp(plateau[x][y].nom_piece,"  ")==0);
 				if (verif1)
@@ -929,11 +934,11 @@ verif2;
 	}
 	else if (type==120)
 	{
-		if(piece[0]==112)				/*pion*/
+		if(piece[1]==112)				/*pion*/
 		{
-			if(piece[1]==98)			/*blanc*/
+			if(piece[0]==87)			/*blanc*/
 			{
-				if (plateau[x][y].nom_piece[1]==110)
+				if (plateau[x][y].nom_piece[0]==66)
 				{
 					if ((x-xd==1 && y-yd==1)||(x-xd==1 && yd-y==1))
 					{
@@ -942,9 +947,9 @@ verif2;
 					}
 				}
 			}
-			else if(piece[1]==110)			/*noir*/
+			else if(piece[0]==66)			/*noir*/
 			{
-				if (plateau[x][y].nom_piece[1]==98)
+				if (plateau[x][y].nom_piece[0]==87)
 				{
 					if ((xd-x==1 && y-yd==1)||(xd-x==1 && yd-y==1))
 					{
@@ -954,11 +959,11 @@ verif2;
 				}
 			}
 		}
-		if(piece[0]==82)				/*roi*/
+		if(piece[1]==75)				/*roi*/
 		{
-			if(piece[1]==98)			/*blanc*/
+			if(piece[0]==87)			/*blanc*/
 			{
-				if (plateau[x][y].nom_piece[1]==110)
+				if (plateau[x][y].nom_piece[0]==66)
 				{
 					if ((xd-x==1) || (x-xd==1) || (yd-y==1) || (y-yd==1))
 					{
@@ -967,9 +972,9 @@ verif2;
 					}
 				}
 			}
-			else if(piece[1]==110)			/*noir*/
+			else if(piece[0]==66)			/*noir*/
 			{
-				if (plateau[x][y].nom_piece[1]==98)
+				if (plateau[x][y].nom_piece[0]==87)
 				{
 					if ((xd-x==1) || (x-xd==1) || (yd-y==1) || (y-yd==1))
 					{
@@ -979,11 +984,11 @@ verif2;
 				}
 			}
 		}
-		else if(piece[0]==68)				/*dame*/
+		else if(piece[1]==113)				/*dame*/
 		{
-			if(piece[1]==98)			/*blanc*/
+			if(piece[0]==87)			/*blanc*/
 			{
-				if (plateau[x][y].nom_piece[1]==110)
+				if (plateau[x][y].nom_piece[0]==66)
 				{
 					if(y==yd)
 					{
@@ -1085,9 +1090,9 @@ verif2;
 					}
 				}
 			}
-			else if(piece[1]==110)			/*noir*/
+			else if(piece[0]==66)			/*noir*/
 			{
-				if (plateau[x][y].nom_piece[1]==98)
+				if (plateau[x][y].nom_piece[0]==87)
 				{
 					if(y==yd)
 					{
@@ -1190,11 +1195,11 @@ verif2;
 				}
 			}
 		}
-		else if(piece[0]==84)				/*tour*/
+		else if(piece[1]==114)				/*tour*/
 		{
-			if(piece[1]==98)			/*blanc*/
+			if(piece[0]==87)			/*blanc*/
 			{
-				if (plateau[x][y].nom_piece[1]==110)
+				if (plateau[x][y].nom_piece[0]==66)
 				{
 					if(y==yd)
 					{
@@ -1265,9 +1270,9 @@ verif2;
 					}
 				}
 			}
-			else if(piece[1]==110)
+			else if(piece[0]==66)
 			{
-				if (plateau[x][y].nom_piece[1]==98)
+				if (plateau[x][y].nom_piece[0]==87)
 				{
 					if(y==yd)
 					{
@@ -1334,11 +1339,11 @@ verif2;
 				}
 			}
 		}
-		else if(piece[0]==67)				/*cavalier*/
+		else if(piece[1]==107)				/*cavalier*/
 		{
-			if(piece[1]==98)			/*blanc*/
+			if(piece[0]==87)			/*blanc*/
 			{
-				if (plateau[x][y].nom_piece[1]==110)
+				if (plateau[x][y].nom_piece[0]==66)
 				{
 					if (((xd-x==2) && (yd-y==1)) || ((xd-x==2) && (y-yd==1)) || ((x-xd==2)
 && (yd-y==1)) || ((x-xd==2) && (y-yd==1))
@@ -1350,9 +1355,9 @@ verif2;
 					}
 				}
 			}
-			else if(piece[1]==110)			/*noir*/
+			else if(piece[0]==66)			/*noir*/
 			{
-				if (plateau[x][y].nom_piece[1]==98)
+				if (plateau[x][y].nom_piece[0]==87)
 				{
 					if (((xd-x==2) && (yd-y==1)) || ((xd-x==2) && (y-yd==1)) || ((x-xd==2)
 && (yd-y==1)) || ((x-xd==2) && (y-yd==1))
@@ -1365,11 +1370,11 @@ verif2;
 				}
 			}
 		}
-		else if(piece[0]==70)				/*fou*/
+		else if(piece[1]==98)				/*fou*/
 		{
-			if(piece[1]==98)			/*blanc*/
+			if(piece[0]==87)			/*blanc*/
 			{
-				if (plateau[x][y].nom_piece[1]==110)
+				if (plateau[x][y].nom_piece[0]==66)
 				{
 					if (x>xd)
 					{
@@ -1417,9 +1422,9 @@ verif2;
 					}
 				}
 			}
-			else if(piece[1]==110)			/*noir*/
+			else if(piece[0]==66)			/*noir*/
 			{
-				if (plateau[x][y].nom_piece[1]==98)
+				if (plateau[x][y].nom_piece[0]==87)
 				{
 					if (x>xd)
 					{
@@ -1484,9 +1489,9 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	{
 		for (b=0;b<8;b++)
 		{
-			if (plateau[a][b].nom_piece[0]==82)
+			if (plateau[a][b].nom_piece[1]==75)
 			{
-				if (plateau[a][b].nom_piece[1]==98)
+				if (plateau[a][b].nom_piece[0]==87)
 				{
 					xroi=a;
 					yroi=b;
@@ -1500,7 +1505,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 
 	e=xroi+1;
 	f=yroi+1;
-	comp1=(strcmp(plateau[e][f].nom_piece,"pn")==0);
+	comp1=(strcmp(plateau[e][f].nom_piece,"Bp")==0);
 	if (comp1)
 	{
 		echec=1;
@@ -1508,7 +1513,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	}
 	e=xroi+1;
 	f=yroi-1;
-	comp1=(strcmp(plateau[e][f].nom_piece,"pn")==0);
+	comp1=(strcmp(plateau[e][f].nom_piece,"Bp")==0);
 	if (comp1)
 	{
 		echec=1;
@@ -1516,7 +1521,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	}
 	e=xroi+1;
 	f=yroi+2;
-	comp1=(strcmp(plateau[e][f].nom_piece,"Cn")==0);
+	comp1=(strcmp(plateau[e][f].nom_piece,"Bk")==0);
 	if (comp1)
 	{
 		echec=1;
@@ -1524,7 +1529,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	}
 	e=xroi+1;
 	f=yroi-2;
-	comp1=(strcmp(plateau[e][f].nom_piece,"Cn")==0);
+	comp1=(strcmp(plateau[e][f].nom_piece,"Bk")==0);
 	if (comp1)
 	{
 		echec=1;
@@ -1532,7 +1537,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	}
 	e=xroi-1;
 	f=yroi+2;
-	comp1=(strcmp(plateau[e][f].nom_piece,"Cn")==0);
+	comp1=(strcmp(plateau[e][f].nom_piece,"Bk")==0);
 	if (comp1)
 	{
 		echec=1;
@@ -1540,7 +1545,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	}
 	e=xroi-1;
 	f=yroi-2;
-	comp1=(strcmp(plateau[e][f].nom_piece,"Cn")==0);
+	comp1=(strcmp(plateau[e][f].nom_piece,"Bk")==0);
 	if (comp1)
 	{
 		echec=1;
@@ -1548,7 +1553,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	}
 	e=xroi+2;
 	f=yroi+1;
-	comp1=(strcmp(plateau[e][f].nom_piece,"Cn")==0);
+	comp1=(strcmp(plateau[e][f].nom_piece,"Bk")==0);
 	if (comp1)
 	{
 		echec=1;
@@ -1556,7 +1561,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	}
 	e=xroi+2;
 	f=yroi-1;
-	comp1=(strcmp(plateau[e][f].nom_piece,"Cn")==0);
+	comp1=(strcmp(plateau[e][f].nom_piece,"Bk")==0);
 	if (comp1)
 	{
 		echec=1;
@@ -1564,7 +1569,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	}
 	e=xroi-2;
 	f=yroi+1;
-	comp1=(strcmp(plateau[e][f].nom_piece,"Cn")==0);
+	comp1=(strcmp(plateau[e][f].nom_piece,"Bk")==0);
 	if (comp1)
 	{
 		echec=1;
@@ -1572,7 +1577,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	}
 	e=xroi-2;
 	f=yroi-1;
-	comp1=(strcmp(plateau[e][f].nom_piece,"Cn")==0);
+	comp1=(strcmp(plateau[e][f].nom_piece,"Bk")==0);
 	if (comp1)
 	{
 		echec=1;
@@ -1580,7 +1585,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	}
 	e=xroi-1;
 	f=yroi-1;
-	comp1=(strcmp(plateau[e][f].nom_piece,"Rn")==0);
+	comp1=(strcmp(plateau[e][f].nom_piece,"BK")==0);
 	if (comp1)
 	{
 		echec=1;
@@ -1588,7 +1593,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	}
 	e=xroi-1;
 	f=yroi+1;
-	comp1=(strcmp(plateau[e][f].nom_piece,"Rn")==0);
+	comp1=(strcmp(plateau[e][f].nom_piece,"BK")==0);
 	if (comp1)
 	{
 		echec=1;
@@ -1596,7 +1601,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	}
 	e=xroi-1;
 	f=yroi;
-	comp1=(strcmp(plateau[e][f].nom_piece,"Rn")==0);
+	comp1=(strcmp(plateau[e][f].nom_piece,"BK")==0);
 	if (comp1)
 	{
 		echec=1;
@@ -1604,7 +1609,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	}
 	e=xroi+1;
 	f=yroi;
-	comp1=(strcmp(plateau[e][f].nom_piece,"Rn")==0);
+	comp1=(strcmp(plateau[e][f].nom_piece,"BK")==0);
 	if (comp1)
 	{
 		echec=1;
@@ -1612,7 +1617,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	}
 	e=xroi+1;
 	f=yroi+1;
-	comp1=(strcmp(plateau[e][f].nom_piece,"Rn")==0);
+	comp1=(strcmp(plateau[e][f].nom_piece,"BK")==0);
 	if (comp1)
 	{
 		echec=1;
@@ -1620,7 +1625,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	}
 	e=xroi+1;
 	f=yroi-1;
-	comp1=(strcmp(plateau[e][f].nom_piece,"Rn")==0);
+	comp1=(strcmp(plateau[e][f].nom_piece,"BK")==0);
 	if (comp1)
 	{
 		echec=1;
@@ -1628,7 +1633,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	}
 	e=xroi;
 	f=yroi+1;
-	comp1=(strcmp(plateau[e][f].nom_piece,"Rn")==0);
+	comp1=(strcmp(plateau[e][f].nom_piece,"BK")==0);
 	if (comp1)
 	{
 		echec=1;
@@ -1636,7 +1641,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	}
 	e=xroi;
 	f=yroi-1;
-	comp1=(strcmp(plateau[e][f].nom_piece,"Rn")==0);
+	comp1=(strcmp(plateau[e][f].nom_piece,"BK")==0);
 	if (comp1)
 	{
 		echec=1;
@@ -1645,7 +1650,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	e=xroi-1;
 	f=yroi;
 	comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-	comp2=(strcmp(plateau[e][f].nom_piece,"Tn")==0);
+	comp2=(strcmp(plateau[e][f].nom_piece,"Br")==0);
 	if (comp2)
 	{
 		echec=1;
@@ -1655,7 +1660,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	{
 		e--;
 		comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-		comp2=(strcmp(plateau[e][f].nom_piece,"Tn")==0);
+		comp2=(strcmp(plateau[e][f].nom_piece,"Br")==0);
 		if (comp2)
 		{
 			echec=1;
@@ -1665,7 +1670,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	e=xroi;
 	f=yroi-1;
 	comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-	comp2=(strcmp(plateau[e][f].nom_piece,"Tn")==0);
+	comp2=(strcmp(plateau[e][f].nom_piece,"Br")==0);
 	if (comp2)
 	{
 		echec=1;
@@ -1675,7 +1680,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	{
 		f--;
 		comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-		comp2=(strcmp(plateau[e][f].nom_piece,"Tn")==0);
+		comp2=(strcmp(plateau[e][f].nom_piece,"Br")==0);
 		if (comp2)
 		{
 			echec=1;
@@ -1685,7 +1690,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	e=xroi+1;
 	f=yroi;
 	comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-	comp2=(strcmp(plateau[e][f].nom_piece,"Tn")==0);
+	comp2=(strcmp(plateau[e][f].nom_piece,"Br")==0);
 	if (comp2)
 	{
 		echec=1;
@@ -1695,7 +1700,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	{
 		e++;
 		comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-		comp2=(strcmp(plateau[e][f].nom_piece,"Tn")==0);
+		comp2=(strcmp(plateau[e][f].nom_piece,"Br")==0);
 		if (comp2)
 		{
 			echec=1;
@@ -1705,7 +1710,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	e=xroi;
 	f=yroi+1;
 	comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-	comp2=(strcmp(plateau[e][f].nom_piece,"Tn")==0);
+	comp2=(strcmp(plateau[e][f].nom_piece,"Br")==0);
 	if (comp2)
 	{
 		echec=1;
@@ -1715,7 +1720,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	{
 		f++;
 		comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-		comp2=(strcmp(plateau[e][f].nom_piece,"Tn")==0);
+		comp2=(strcmp(plateau[e][f].nom_piece,"Br")==0);
 		if (comp2)
 		{
 			echec=1;
@@ -1725,7 +1730,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	e=xroi-1;
 	f=yroi;
 	comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-	comp2=(strcmp(plateau[e][f].nom_piece,"Dn")==0);
+	comp2=(strcmp(plateau[e][f].nom_piece,"Bq")==0);
 	if (comp2)
 	{
 		echec=1;
@@ -1735,7 +1740,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	{
 		e--;
 		comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-		comp2=(strcmp(plateau[e][f].nom_piece,"Dn")==0);
+		comp2=(strcmp(plateau[e][f].nom_piece,"Bq")==0);
 		if (comp2)
 		{
 			echec=1;
@@ -1745,7 +1750,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	e=xroi;
 	f=yroi-1;
 	comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-	comp2=(strcmp(plateau[e][f].nom_piece,"Dn")==0);
+	comp2=(strcmp(plateau[e][f].nom_piece,"Bq")==0);
 	if (comp2)
 	{
 		echec=1;
@@ -1755,7 +1760,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	{
 		f--;
 		comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-		comp2=(strcmp(plateau[e][f].nom_piece,"Dn")==0);
+		comp2=(strcmp(plateau[e][f].nom_piece,"Bq")==0);
 		if (comp2)
 		{
 			echec=1;
@@ -1765,7 +1770,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	e=xroi+1;
 	f=yroi;
 	comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-	comp2=(strcmp(plateau[e][f].nom_piece,"Dn")==0);
+	comp2=(strcmp(plateau[e][f].nom_piece,"Bq")==0);
 	if (comp2)
 	{
 		echec=1;
@@ -1775,7 +1780,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	{
 		e++;
 		comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-		comp2=(strcmp(plateau[e][f].nom_piece,"Dn")==0);
+		comp2=(strcmp(plateau[e][f].nom_piece,"Bq")==0);
 		if (comp2)
 		{
 			echec=1;
@@ -1785,7 +1790,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	e=xroi;
 	f=yroi+1;
 	comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-	comp2=(strcmp(plateau[e][f].nom_piece,"Dn")==0);
+	comp2=(strcmp(plateau[e][f].nom_piece,"Bq")==0);
 	if (comp2)
 	{
 		echec=1;
@@ -1795,7 +1800,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	{
 		f++;
 		comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-		comp2=(strcmp(plateau[e][f].nom_piece,"Dn")==0);
+		comp2=(strcmp(plateau[e][f].nom_piece,"Bq")==0);
 		if (comp2)
 		{
 			echec=1;
@@ -1805,7 +1810,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	e=xroi+1;
 	f=yroi+1;
 	comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-	comp2=(strcmp(plateau[e][f].nom_piece,"Dn")==0);
+	comp2=(strcmp(plateau[e][f].nom_piece,"Bq")==0);
 	if (comp2)
 	{
 		echec=1;
@@ -1816,7 +1821,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 		e++;
 		f++;
 		comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-		comp2=(strcmp(plateau[e][f].nom_piece,"Dn")==0);
+		comp2=(strcmp(plateau[e][f].nom_piece,"Bq")==0);
 		if (comp2)
 		{
 			echec=1;
@@ -1826,7 +1831,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	e=xroi+1;
 	f=yroi-1;
 	comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-	comp2=(strcmp(plateau[e][f].nom_piece,"Dn")==0);
+	comp2=(strcmp(plateau[e][f].nom_piece,"Bq")==0);
 	if (comp2)
 	{
 		echec=1;
@@ -1837,7 +1842,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 		e++;
 		f--;
 		comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-		comp2=(strcmp(plateau[e][f].nom_piece,"Dn")==0);
+		comp2=(strcmp(plateau[e][f].nom_piece,"Bq")==0);
 		if (comp2){
 			echec=1;
 			printf("Check detected by a black queen...\n");
@@ -1846,7 +1851,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	e=xroi-1;
 	f=yroi+1;
 	comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-	comp2=(strcmp(plateau[e][f].nom_piece,"Dn")==0);
+	comp2=(strcmp(plateau[e][f].nom_piece,"Bq")==0);
 	if (comp2)
 	{
 		echec=1;
@@ -1857,7 +1862,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 		e--;
 		f++;
 		comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-		comp2=(strcmp(plateau[e][f].nom_piece,"Dn")==0);
+		comp2=(strcmp(plateau[e][f].nom_piece,"Bq")==0);
 		if (comp2){
 			echec=1;
 			printf("Check detected by a black queen...\n");
@@ -1866,7 +1871,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	e=xroi-1;
 	f=yroi-1;
 	comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-	comp2=(strcmp(plateau[e][f].nom_piece,"Dn")==0);
+	comp2=(strcmp(plateau[e][f].nom_piece,"Bq")==0);
 	if (comp2)
 	{
 		echec=1;
@@ -1877,7 +1882,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 		e--;
 		f--;
 		comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-		comp2=(strcmp(plateau[e][f].nom_piece,"Dn")==0);
+		comp2=(strcmp(plateau[e][f].nom_piece,"Bq")==0);
 		if (comp2){
 			echec=1;
 			printf("Check detected by a black queen...\n");
@@ -1886,7 +1891,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	e=xroi+1;
 	f=yroi+1;
 	comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-	comp2=(strcmp(plateau[e][f].nom_piece,"Fn")==0);
+	comp2=(strcmp(plateau[e][f].nom_piece,"Bb")==0);
 	if (comp2)
 	{
 		echec=1;
@@ -1897,7 +1902,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 		e++;
 		f++;
 		comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-		comp2=(strcmp(plateau[e][f].nom_piece,"Fn")==0);
+		comp2=(strcmp(plateau[e][f].nom_piece,"Bb")==0);
 		if (comp2)
 		{
 			echec=1;
@@ -1907,7 +1912,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	e=xroi+1;
 	f=yroi-1;
 	comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-	comp2=(strcmp(plateau[e][f].nom_piece,"Fn")==0);
+	comp2=(strcmp(plateau[e][f].nom_piece,"Bb")==0);
 	if (comp2)
 	{
 		echec=1;
@@ -1918,7 +1923,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 		e++;
 		f--;
 		comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-		comp2=(strcmp(plateau[e][f].nom_piece,"Fn")==0);
+		comp2=(strcmp(plateau[e][f].nom_piece,"Bb")==0);
 		if (comp2)
 		{
 			echec=1;
@@ -1928,7 +1933,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	e=xroi-1;
 	f=yroi+1;
 	comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-	comp2=(strcmp(plateau[e][f].nom_piece,"Fn")==0);
+	comp2=(strcmp(plateau[e][f].nom_piece,"Bb")==0);
 	if (comp2)
 	{
 		echec=1;
@@ -1939,7 +1944,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 		e--;
 		f++;
 		comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-		comp2=(strcmp(plateau[e][f].nom_piece,"Fn")==0);
+		comp2=(strcmp(plateau[e][f].nom_piece,"Bb")==0);
 		if (comp2)
 		{
 			echec=1;
@@ -1949,7 +1954,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 	e=xroi-1;
 	f=yroi-1;
 	comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-	comp2=(strcmp(plateau[e][f].nom_piece,"Fn")==0);
+	comp2=(strcmp(plateau[e][f].nom_piece,"Bb")==0);
 	if (comp2)
 	{
 		echec=1;
@@ -1960,7 +1965,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi,comp1, comp2;
 		e--;
 		f--;
 		comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-		comp2=(strcmp(plateau[e][f].nom_piece,"Fn")==0);
+		comp2=(strcmp(plateau[e][f].nom_piece,"Bb")==0);
 		if (comp2)
 		{
 			echec=1;
@@ -1980,9 +1985,9 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	{
 		for (b=0;b<8;b++)
 		{
-			if (plateau[a][b].nom_piece[0]==82)
+			if (plateau[a][b].nom_piece[1]==75)
 			{
-				if (plateau[a][b].nom_piece[1]==110)
+				if (plateau[a][b].nom_piece[0]==66)
 				{
 					xroi=a;
 					yroi=b;
@@ -1994,7 +1999,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	printf("Black king's position is (%d, %d)\n", xroi, yroi);
 	e=xroi-1;
 	f=yroi+1;
-	comp1=(strcmp(plateau[e][f].nom_piece,"pb")==0);
+	comp1=(strcmp(plateau[e][f].nom_piece,"Wp")==0);
 	if (e>0 && f<7 && comp1)
 	{
 		echec=1;
@@ -2002,7 +2007,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	}
 	e=xroi-1;
 	f=yroi-1;
-	comp1=(strcmp(plateau[e][f].nom_piece,"pb")==0);
+	comp1=(strcmp(plateau[e][f].nom_piece,"Wp")==0);
 	if (e>0 && f>0 && comp1)
 	{
 		echec=1;
@@ -2010,7 +2015,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	}
 	e=xroi+1;
 	f=yroi+2;
-	comp1=(strcmp(plateau[e][f].nom_piece,"Cb")==0);
+	comp1=(strcmp(plateau[e][f].nom_piece,"Wk")==0);
 	if (e<7 && f<6 && comp1)
 	{
 		echec=1;
@@ -2018,7 +2023,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	}
 	e=xroi+1;
 	f=yroi-2;
-	comp1=(strcmp(plateau[e][f].nom_piece,"Cb")==0);
+	comp1=(strcmp(plateau[e][f].nom_piece,"Wk")==0);
 	if (e<7 && f>1 && comp1)
 	{
 		echec=1;
@@ -2026,7 +2031,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	}
 	e=xroi-1;
 	f=yroi+2;
-	comp1=(strcmp(plateau[e][f].nom_piece,"Cb")==0);
+	comp1=(strcmp(plateau[e][f].nom_piece,"Wk")==0);
 	if (e>0 && f<6 && comp1)
 	{
 		echec=1;
@@ -2034,7 +2039,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	}
 	e=xroi-1;
 	f=yroi-2;
-	comp1=(strcmp(plateau[e][f].nom_piece,"Cb")==0);
+	comp1=(strcmp(plateau[e][f].nom_piece,"Wk")==0);
 	if (e>0 && f>1 && comp1)
 	{
 		echec=1;
@@ -2042,7 +2047,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	}
 	e=xroi+2;
 	f=yroi+1;
-	comp1=(strcmp(plateau[e][f].nom_piece,"Cb")==0);
+	comp1=(strcmp(plateau[e][f].nom_piece,"Wk")==0);
 	if (e<6 && f<7 && comp1)
 	{
 		echec=1;
@@ -2050,7 +2055,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	}
 	e=xroi+2;
 	f=yroi-1;
-	comp1=(strcmp(plateau[e][f].nom_piece,"Cb")==0);
+	comp1=(strcmp(plateau[e][f].nom_piece,"Wk")==0);
 	if (e<6 && f>0 && comp1)
 	{
 		echec=1;
@@ -2058,7 +2063,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	}
 	e=xroi-2;
 	f=yroi+1;
-	comp1=(strcmp(plateau[e][f].nom_piece,"Cb")==0);
+	comp1=(strcmp(plateau[e][f].nom_piece,"Wk")==0);
 	if (e>1 && f<7 && comp1)
 	{
 		echec=1;
@@ -2066,7 +2071,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	}
 	e=xroi-2;
 	f=yroi-1;
-	comp1=(strcmp(plateau[e][f].nom_piece,"Cb")==0);
+	comp1=(strcmp(plateau[e][f].nom_piece,"Wk")==0);
 	if (e>1 && f>0 && comp1)
 	{
 		echec=1;
@@ -2074,7 +2079,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	}
 	e=xroi-1;
 	f=yroi-1;
-	comp1=(strcmp(plateau[e][f].nom_piece,"Rn")==0);
+	comp1=(strcmp(plateau[e][f].nom_piece,"BK")==0);
 	if (comp1)
 	{
 		echec=1;
@@ -2082,7 +2087,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	}
 	e=xroi-1;
 	f=yroi+1;
-	comp1=(strcmp(plateau[e][f].nom_piece,"Rn")==0);
+	comp1=(strcmp(plateau[e][f].nom_piece,"BK")==0);
 	if (comp1)
 	{
 		echec=1;
@@ -2090,7 +2095,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	}
 	e=xroi-1;
 	f=yroi;
-	comp1=(strcmp(plateau[e][f].nom_piece,"Rn")==0);
+	comp1=(strcmp(plateau[e][f].nom_piece,"BK")==0);
 	if (comp1)
 	{
 		echec=1;
@@ -2098,7 +2103,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	}
 	e=xroi+1;
 	f=yroi;
-	comp1=(strcmp(plateau[e][f].nom_piece,"Rn")==0);
+	comp1=(strcmp(plateau[e][f].nom_piece,"BK")==0);
 	if (comp1)
 	{
 		echec=1;
@@ -2106,7 +2111,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	}
 	e=xroi+1;
 	f=yroi+1;
-	comp1=(strcmp(plateau[e][f].nom_piece,"Rn")==0);
+	comp1=(strcmp(plateau[e][f].nom_piece,"BK")==0);
 	if (comp1)
 	{
 		echec=1;
@@ -2114,7 +2119,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	}
 	e=xroi+1;
 	f=yroi-1;
-	comp1=(strcmp(plateau[e][f].nom_piece,"Rn")==0);
+	comp1=(strcmp(plateau[e][f].nom_piece,"BK")==0);
 	if (comp1)
 	{
 		echec=1;
@@ -2122,7 +2127,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	}
 	e=xroi;
 	f=yroi+1;
-	comp1=(strcmp(plateau[e][f].nom_piece,"Rn")==0);
+	comp1=(strcmp(plateau[e][f].nom_piece,"BK")==0);
 	if (comp1)
 	{
 		echec=1;
@@ -2130,7 +2135,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	}
 	e=xroi;
 	f=yroi-1;
-	comp1=(strcmp(plateau[e][f].nom_piece,"Rn")==0);
+	comp1=(strcmp(plateau[e][f].nom_piece,"BK")==0);
 	if (comp1)
 	{
 		echec=1;
@@ -2139,7 +2144,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	e=xroi-1;
 	f=yroi;
 	comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-	comp2=(strcmp(plateau[e][f].nom_piece,"Tb")==0);
+	comp2=(strcmp(plateau[e][f].nom_piece,"Wr")==0);
 	if (comp2)
 	{
 		echec=1;
@@ -2149,7 +2154,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	{
 		e--;
 		comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-		comp2=(strcmp(plateau[e][f].nom_piece,"Tb")==0);
+		comp2=(strcmp(plateau[e][f].nom_piece,"Wr")==0);
 		if (comp2)
 		{
 			echec=1;
@@ -2159,7 +2164,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	e=xroi;
 	f=yroi-1;
 	comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-	comp2=(strcmp(plateau[e][f].nom_piece,"Tb")==0);
+	comp2=(strcmp(plateau[e][f].nom_piece,"Wr")==0);
 	if (comp2)
 	{
 		echec=1;
@@ -2169,7 +2174,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	{
 		f--;
 		comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-		comp2=(strcmp(plateau[e][f].nom_piece,"Tb")==0);
+		comp2=(strcmp(plateau[e][f].nom_piece,"Wr")==0);
 		if (comp2)
 		{
 			echec=1;
@@ -2179,7 +2184,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	e=xroi+1;
 	f=yroi;
 	comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-	comp2=(strcmp(plateau[e][f].nom_piece,"Tb")==0);
+	comp2=(strcmp(plateau[e][f].nom_piece,"Wr")==0);
 	if (comp2)
 	{
 		echec=1;
@@ -2189,7 +2194,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	{
 		e++;
 		comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-		comp2=(strcmp(plateau[e][f].nom_piece,"Tb")==0);
+		comp2=(strcmp(plateau[e][f].nom_piece,"Wr")==0);
 		if (comp2)
 		{
 			echec=1;
@@ -2199,7 +2204,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	e=xroi;
 	f=yroi+1;
 	comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-	comp2=(strcmp(plateau[e][f].nom_piece,"Tb")==0);
+	comp2=(strcmp(plateau[e][f].nom_piece,"Wr")==0);
 	if (comp2)
 	{
 		echec=1;
@@ -2209,7 +2214,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	{
 		f++;
 		comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-		comp2=(strcmp(plateau[e][f].nom_piece,"Tb")==0);
+		comp2=(strcmp(plateau[e][f].nom_piece,"Wr")==0);
 		if (comp2)
 		{
 			echec=1;
@@ -2219,7 +2224,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	e=xroi-1;
 	f=yroi;
 	comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-	comp2=(strcmp(plateau[e][f].nom_piece,"Db")==0);
+	comp2=(strcmp(plateau[e][f].nom_piece,"Wq")==0);
 	if (comp2)
 	{
 		echec=1;
@@ -2229,7 +2234,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	{
 		e--;
 		comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-		comp2=(strcmp(plateau[e][f].nom_piece,"Db")==0);
+		comp2=(strcmp(plateau[e][f].nom_piece,"Wq")==0);
 		if (comp2)
 		{
 			echec=1;
@@ -2239,7 +2244,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	e=xroi;
 	f=yroi-1;
 	comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-	comp2=(strcmp(plateau[e][f].nom_piece,"Db")==0);
+	comp2=(strcmp(plateau[e][f].nom_piece,"Wq")==0);
 	if (comp2)
 	{
 		echec=1;
@@ -2249,7 +2254,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	{
 		f--;
 		comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-		comp2=(strcmp(plateau[e][f].nom_piece,"Db")==0);
+		comp2=(strcmp(plateau[e][f].nom_piece,"Wq")==0);
 		if (comp2)
 		{
 			echec=1;
@@ -2259,7 +2264,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	e=xroi+1;
 	f=yroi;
 	comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-	comp2=(strcmp(plateau[e][f].nom_piece,"Db")==0);
+	comp2=(strcmp(plateau[e][f].nom_piece,"Wq")==0);
 	if (comp2)
 	{
 		echec=1;
@@ -2269,7 +2274,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	{
 		e++;
 		comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-		comp2=(strcmp(plateau[e][f].nom_piece,"Db")==0);
+		comp2=(strcmp(plateau[e][f].nom_piece,"Wq")==0);
 		if (comp2)
 		{
 			echec=1;
@@ -2279,7 +2284,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	e=xroi;
 	f=yroi+1;
 	comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-	comp2=(strcmp(plateau[e][f].nom_piece,"Db")==0);
+	comp2=(strcmp(plateau[e][f].nom_piece,"Wq")==0);
 	if (comp2)
 	{
 		echec=1;
@@ -2289,7 +2294,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	{
 		f++;
 		comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-		comp2=(strcmp(plateau[e][f].nom_piece,"Db")==0);
+		comp2=(strcmp(plateau[e][f].nom_piece,"Wq")==0);
 		if (comp2)
 		{
 			echec=1;
@@ -2299,7 +2304,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	e=xroi+1;
 	f=yroi+1;
 	comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-	comp2=(strcmp(plateau[e][f].nom_piece,"Db")==0);
+	comp2=(strcmp(plateau[e][f].nom_piece,"Wq")==0);
 	if (comp2)
 	{
 		echec=1;
@@ -2310,7 +2315,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 		e++;
 		f++;
 		comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-		comp2=(strcmp(plateau[e][f].nom_piece,"Db")==0);
+		comp2=(strcmp(plateau[e][f].nom_piece,"Wq")==0);
 		if (comp2)
 		{
 			echec=1;
@@ -2320,7 +2325,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	e=xroi+1;
 	f=yroi-1;
 	comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-	comp2=(strcmp(plateau[e][f].nom_piece,"Db")==0);
+	comp2=(strcmp(plateau[e][f].nom_piece,"Wq")==0);
 	if (comp2)
 	{
 		echec=1;
@@ -2331,7 +2336,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 		e++;
 		f--;
 		comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-		comp2=(strcmp(plateau[e][f].nom_piece,"Db")==0);
+		comp2=(strcmp(plateau[e][f].nom_piece,"Wq")==0);
 		if (comp2){
 			echec=1;
 			printf("Check detected by a white queen...\n");
@@ -2340,7 +2345,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	e=xroi-1;
 	f=yroi+1;
 	comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-	comp2=(strcmp(plateau[e][f].nom_piece,"Db")==0);
+	comp2=(strcmp(plateau[e][f].nom_piece,"Wq")==0);
 	if (comp2)
 	{
 		echec=1;
@@ -2351,7 +2356,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 		e--;
 		f++;
 		comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-		comp2=(strcmp(plateau[e][f].nom_piece,"Db")==0);
+		comp2=(strcmp(plateau[e][f].nom_piece,"Wq")==0);
 		if (comp2){
 			echec=1;
 			printf("Check detected by a white queen...\n");
@@ -2360,7 +2365,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	e=xroi-1;
 	f=yroi-1;
 	comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-	comp2=(strcmp(plateau[e][f].nom_piece,"Db")==0);
+	comp2=(strcmp(plateau[e][f].nom_piece,"Wq")==0);
 	if (comp2)
 	{
 		echec=1;
@@ -2371,7 +2376,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 		e--;
 		f--;
 		comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-		comp2=(strcmp(plateau[e][f].nom_piece,"Db")==0);
+		comp2=(strcmp(plateau[e][f].nom_piece,"Wq")==0);
 		if (comp2){
 			echec=1;
 			printf("Check detected by a white queen...\n");
@@ -2380,7 +2385,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	e=xroi+1;
 	f=yroi+1;
 	comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-	comp2=(strcmp(plateau[e][f].nom_piece,"Fb")==0);
+	comp2=(strcmp(plateau[e][f].nom_piece,"Wb")==0);
 	if (comp2)
 	{
 		echec=1;
@@ -2391,7 +2396,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 		e++;
 		f++;
 		comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-		comp2=(strcmp(plateau[e][f].nom_piece,"Fb")==0);
+		comp2=(strcmp(plateau[e][f].nom_piece,"Wb")==0);
 		if (comp2)
 		{
 			echec=1;
@@ -2401,7 +2406,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	e=xroi+1;
 	f=yroi-1;
 	comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-	comp2=(strcmp(plateau[e][f].nom_piece,"Fb")==0);
+	comp2=(strcmp(plateau[e][f].nom_piece,"Wb")==0);
 	if (comp2)
 	{
 		echec=1;
@@ -2412,7 +2417,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 		e++;
 		f--;
 		comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-		comp2=(strcmp(plateau[e][f].nom_piece,"Fb")==0);
+		comp2=(strcmp(plateau[e][f].nom_piece,"Wb")==0);
 		if (comp2)
 		{
 			echec=1;
@@ -2422,7 +2427,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	e=xroi-1;
 	f=yroi+1;
 	comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-	comp2=(strcmp(plateau[e][f].nom_piece,"Fb")==0);
+	comp2=(strcmp(plateau[e][f].nom_piece,"Wb")==0);
 	if (comp2)
 	{
 		echec=1;
@@ -2433,7 +2438,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 		e--;
 		f++;
 		comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-		comp2=(strcmp(plateau[e][f].nom_piece,"Fb")==0);
+		comp2=(strcmp(plateau[e][f].nom_piece,"Wb")==0);
 		if (comp2)
 		{
 			echec=1;
@@ -2443,7 +2448,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 	e=xroi-1;
 	f=yroi-1;
 	comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-	comp2=(strcmp(plateau[e][f].nom_piece,"Fb")==0);
+	comp2=(strcmp(plateau[e][f].nom_piece,"Wb")==0);
 	if (comp2)
 	{
 		echec=1;
@@ -2454,7 +2459,7 @@ int i, e, f, a, b, calcul, depart, echec=0, xroi, yroi, comp1, comp2;
 		e--;
 		f--;
 		comp1=(strcmp(plateau[e][f].nom_piece,"  ")==0);
-		comp2=(strcmp(plateau[e][f].nom_piece,"Fb")==0);
+		comp2=(strcmp(plateau[e][f].nom_piece,"Wb")==0);
 		if (comp2)
 		{
 			echec=1;
