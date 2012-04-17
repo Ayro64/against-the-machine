@@ -64,6 +64,7 @@ int identical_position(Position x, Position y);
 int draw_by_repetition_aux(Position pos, Position p, int n);
 void init();
 void drawBoard();
+void newGame();
 char ccouleur(Field f);
 char ctype(Field f);
 
@@ -335,7 +336,8 @@ char ctype(Field f)
         }
 }
 
-int main()
+
+void newGame()
 {
     init();
     drawBoard();
@@ -343,6 +345,37 @@ int main()
     Coordonnees arrivee = {1, 4};
     gameBoard = jouerCoup(gameBoard,depart, arrivee);
     drawBoard();
-    return 0;
+}
+
+int main()
+{
+
+    int choix=-1, test=0;
+
+while(choix != 0)
+{
+    				/*efface l'ecran*/
+	printf("Welcome to Against the Machine\n");
+	printf("1. New Game\n");
+	// printf("2. Load\n");
+	// printf("3. Credit\n");
+	printf("0. Quit\n");
+	printf("Pick a choice ");
+	scanf("%d",&choix);
+
+	switch (choix)
+	{
+		case 1 :
+			newGame();
+			break;
+        // case 2 :chargement();
+		//	break;
+        // case 3 :credit();
+		case 0 :printf("Goodbye\n");
+			break;
+		default :printf("Unrecognized entry\n");
+			 break;
+	}
+}
 }
 
