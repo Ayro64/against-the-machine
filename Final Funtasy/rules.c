@@ -16,7 +16,7 @@ int canMove (Position pos, Field p, Field f)
 	switch (p.pieceType) 
 {
 case KING :
-	
+	//NEED REVOIR COULEUR PION
      if	( (y1==y+1 && x1==x) ||(y1==y-1 && x1==x)||(y1==y+1 &&
 	x1==x+1)||(y1==y+1 && x1==x-1)||(y1==y-1 && x1==x+1)||(y1==y-1 &&
 x1==x-1)||(y1==y && x1==x+1)||(y1==y && x1==x-1) ) {a = 1;}
@@ -71,7 +71,7 @@ x1==x-2)||(y1==y-2 && x1==x+1)||(y1==y-2 && x1==x-1) ){a = 1;}
 	
 case PAWN :	
 	int a=0;
-	if(turn==0)
+	if(pos.turn==BLACK)
 	{
 		if(y==1)
 		{
@@ -89,7 +89,7 @@ case PAWN :
 			if( (pos.board[y][x].piece.pieceType!=NONE)&&(pos.board[y1][x1].piece.color != pos.board[y][x].piece.color)){a = 1;}
  		}
 	}	
-	else if(turn==1)
+	else if(pos.turn==1)
 	{
 		if(y==6)
 		{
