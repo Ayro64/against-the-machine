@@ -285,6 +285,20 @@ int a, b, c=0, couleur;
 	printf("||______|______|______|______|______|______|______|______|\n\t");
 }
 
+Position jouerCoup(Position dep, Coordonnees depart, Coordonnees arrivee)
+{
+    Piece piece_vide;
+    piece_vide.color = WHITE;
+    piece_vide.pieceType = NONE;
+    piece_vide.coords = depart;
+
+    Position end = dep;
+    end.board[arrivee.x][arrivee.y+1].piece = end.board[depart.x][depart.y+1].piece;
+    end.board[arrivee.x][arrivee.y+1].piece.coords = arrivee;
+    end.board[depart.x][depart.y+1].piece = piece_vide;
+    return end;
+}
+
 char ccouleur(Field f)
 {
     if(f.piece.pieceType != NONE)
@@ -324,6 +338,10 @@ char ctype(Field f)
 int main()
 {
     init();
+    drawBoard();
+    Coordonnees depart = {1, 2};
+    Coordonnees arrivee = {1, 4};
+    gameBoard = jouerCoup(gameBoard,depart, arrivee);
     drawBoard();
     return 0;
 }
